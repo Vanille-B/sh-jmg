@@ -4,9 +4,15 @@ headers = {
     'Authorization': 'Bearer YOUR_API_TOKEN',
 }
 
-# Allows to book a slot
-response = requests.post('https://shiftheroes.fr/api/v1/plannings/rwf5Gy/shifts/VVFzyYD/reservations', headers=headers)
 
 
-# TODO: List schedules
-# TODO: List slots
+# TODO: List schedules // GET
+response = requests.get('https://shiftheroes.fr/api/v1/plannings', headers=headers)
+
+
+# TODO: List slots // GET
+response = requests.get('https://shiftheroes.fr/api/v1/plannings/JefZ2o/shifts', headers=headers)
+# print(response.text)
+
+# Allows to book a slot // POST
+response = requests.post('https://shiftheroes.fr/api/v1/plannings/JefZ2o/shifts/bXF4w06/reservations', headers=headers)

@@ -6,13 +6,22 @@ headers = {
 
 
 
-# TODO: List schedules // GET
-response = requests.get('https://shiftheroes.fr/api/v1/plannings', headers=headers)
+# List schedules // GET
+list_schedules = requests.get('https://shiftheroes.fr/api/v1/plannings', headers=headers)
+print(list_schedules.json())
 
 
-# TODO: List slots // GET
-response = requests.get('https://shiftheroes.fr/api/v1/plannings/JefZ2o/shifts', headers=headers)
-# print(response.text)
+# List slots // GET
+list_slots = requests.get('https://shiftheroes.fr/api/v1/plannings/JefZ2o/shifts', headers=headers)
+print(list_slots.json())
+json_data = list_slots.json()
+
+for item in json_data:
+    print("Nouvel élément:")
+    for key, value in item.items():
+        print(f"{key}: {value}")
+    print()
+
 
 # Allows to book a slot // POST
-response = requests.post('https://shiftheroes.fr/api/v1/plannings/JefZ2o/shifts/bXF4w06/reservations', headers=headers)
+booking_slot = requests.post('https://shiftheroes.fr/api/v1/plannings/JefZ2o/shifts/bXF4w06/reservations', headers=headers)  
